@@ -5,7 +5,7 @@ class Game
 end
 
 class Card
-  extend ValueObject
+  extend ValueObjects::ValueObject
   fields :face_value, :suit
   invariants
 
