@@ -1,18 +1,26 @@
 require "./card"
 
 class Deck
-  def self.extract_card(description)
-    face_value = obtain_face_value(description)
-    suit = obtain_suit(description)
-    Card.new(face_value, suit)
+  def extract_cards(hand_description)
+    card_tokens = parse(hand_description)
+    card_descriptions = describe(card_tokens)
+    create(card_descriptions)
   end
 
   private
-  def self.obtain_face_value(description)
-    description.face_value()
+  def create(card_descriptions)
+    card_descriptions.map do |description|
+      description.create_matching_card()
+    end
   end
 
-  def self.obtain_suit(description)
-    description.suit
+  def parse(hand_description)
+    hand_description.split(" ")
+  end
+
+  def describe(cards_tokens)
+    cards_tokens.map do |token|
+      CardDescription.new(token)
+    end
   end
 end

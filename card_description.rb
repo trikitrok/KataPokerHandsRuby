@@ -1,28 +1,31 @@
+require "./card"
+require "./lib/value_object"
+require "./face"
+
 class CardDescription
   extend ValueObjects::ValueObject
   fields :description
 
-  def self.from_card(card)
-    card_description = face_description_of(card) + card.suit
+  def self.with(face, suit)
+    card_description = face.description + suit
     CardDescription.new(card_description)
   end
 
+  def create_matching_card()
+    Card.new(face, suit)
+  end
+
+  private
   def suit()
     String.new(description[1])
   end
 
-  def face_value()
-    FACE_DESCRIPTIONS.find_index(face_description)
+  def face()
+    face_description = obtain_face_description()
+    Face.create(face_description)
   end
 
-  private
-  FACE_DESCRIPTIONS = ["2","3","4","5","6","7","8","9","J","Q","K","A"]
-
-  def face_description()
+  def obtain_face_description()
     String.new(description[0])
-  end
-
-  def self.face_description_of(card)
-    FACE_DESCRIPTIONS[card.face_value]
   end
 end
