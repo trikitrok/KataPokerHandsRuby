@@ -9,6 +9,17 @@ class Face
     Face.new(description, value)
   end
 
+  def compare(other)
+    self <=> other
+  end
+
+  protected
+  def <=>(other)
+    return 0 if self.value == other.value
+    return -1 if self.value > other.value
+    return 1 if self.value < other.value
+  end
+
   private
   FACE_DESCRIPTIONS = ["2","3","4","5","6","7","8","9","J","Q","K","A"]
 
