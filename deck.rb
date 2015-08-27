@@ -9,10 +9,11 @@ class Deck
 
   private
   def self.face_value(description)
-    value_descriptor = value_descriptor(description)
-    Card.value(value_descriptor)
+    face_descriptor = face_descriptor(description)
+    Card.value(face_descriptor)
   end
-  def self.value_descriptor(description)
+
+  def self.face_descriptor(description)
     String.new(description[0])
   end
 
