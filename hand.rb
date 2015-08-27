@@ -3,8 +3,8 @@ require "./card_description"
 require "./deck"
 
 class Hand
-  def initialize(hand_description)
-    @cards = Deck.new().extract_cards(hand_description)
+  def initialize(cards)
+    @cards = cards
   end
 
   def score()
