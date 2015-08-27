@@ -3,7 +3,6 @@ require "./card_description"
 class Deck
   def extract_cards(hand_description)
     card_tokens = parse(hand_description)
-    validate(card_tokens)
     card_descriptions = describe(card_tokens)
     create_cards(card_descriptions)
   end
@@ -16,7 +15,9 @@ class Deck
   end
 
   def parse(hand_description)
-    hand_description.split(" ")
+    card_tokens = hand_description.split(" ")
+    validate(card_tokens)
+    card_tokens
   end
 
   def describe(cards_tokens)
