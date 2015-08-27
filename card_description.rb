@@ -17,15 +17,18 @@ class CardDescription
 
   private
   def suit()
-    String.new(description[1])
+    description_part_at(1)
   end
 
   def face()
-    face_description = obtain_face_description()
-    Face.create(face_description)
+    Face.create(obtain_face_description())
   end
 
   def obtain_face_description()
-    String.new(description[0])
+    description_part_at(0)
+  end
+
+  def description_part_at(index)
+    String.new(description[index])
   end
 end
