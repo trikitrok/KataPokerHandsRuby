@@ -1,7 +1,6 @@
 class Card
   extend ValueObjects::ValueObject
   fields :face_value, :suit
-  invariants
 
   def self.value(value_descriptor)
     FACE_VALUES.find_index(value_descriptor)
