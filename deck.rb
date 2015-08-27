@@ -3,6 +3,7 @@ require "./card_description"
 class Deck
   def extract_cards(hand_description)
     card_tokens = parse(hand_description)
+    validate(card_tokens)
     card_descriptions = describe(card_tokens)
     create_cards(card_descriptions)
   end
@@ -22,5 +23,10 @@ class Deck
     cards_tokens.map do |token|
       CardDescription.new(token)
     end
+  end
+
+  def validate(card_tokens)
+    repeated = card_tokens.select { |token| card_tokens.count(token) > 1 }
+    raise RepeatedCards.new(repeated.uniq) if not repeated.empty?
   end
 end
