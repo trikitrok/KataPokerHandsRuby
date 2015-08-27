@@ -1,7 +1,3 @@
-require "./lib/value_object"
-require "./card_description"
-require "./deck"
-
 class Hand
   def initialize(cards)
     @cards = cards

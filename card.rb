@@ -1,3 +1,4 @@
+require "./lib/value_object"
 require "./card_description"
 
 class Card

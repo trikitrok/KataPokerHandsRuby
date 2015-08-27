@@ -1,4 +1,4 @@
-require "./card"
+require "./card_description"
 
 class Deck
   def extract_cards(hand_description)
