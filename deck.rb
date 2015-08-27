@@ -4,11 +4,11 @@ class Deck
   def extract_cards(hand_description)
     card_tokens = parse(hand_description)
     card_descriptions = describe(card_tokens)
-    create(card_descriptions)
+    create_cards(card_descriptions)
   end
 
   private
-  def create(card_descriptions)
+  def create_cards(card_descriptions)
     card_descriptions.map do |description|
       description.create_matching_card()
     end
