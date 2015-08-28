@@ -10,7 +10,7 @@ class Deck
   private
   def create_cards(card_descriptions)
     card_descriptions.map do |description|
-      description.create_matching_card()
+      description.create_described_card()
     end
   end
 

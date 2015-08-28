@@ -11,7 +11,7 @@ class CardDescription
     CardDescription.new(card_description)
   end
 
-  def create_matching_card()
+  def create_described_card()
     Card.new(face, suit)
   end
 
