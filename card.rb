@@ -5,8 +5,12 @@ class Card
   extend ValueObjects::ValueObject
   fields :face, :suit
 
+  def self.create(description)
+    Card.new(description.face, description.suit)
+  end
+
   def description
-    CardDescription.with(face, suit).description
+    CardDescription.describe(face, suit)
   end
 
   private

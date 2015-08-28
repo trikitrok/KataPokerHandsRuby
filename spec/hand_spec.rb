@@ -8,8 +8,6 @@ describe "Hand" do
   end
 
   def hand_described_by(hand_description)
-    deck = Deck.new()
-    cards = deck.extract_cards(hand_description)
-    Hand.new(cards)
+    Hand.new(hand_description)
   end
 end

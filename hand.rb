@@ -1,6 +1,6 @@
 class Hand
-  def initialize(cards)
-    @cards = cards
+  def initialize(hand_description)
+    @cards = Deck.draw_cards(hand_description)
   end
 
   def score()

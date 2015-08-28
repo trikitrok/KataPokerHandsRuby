@@ -5,7 +5,7 @@ class Face
   fields :description, :value
 
   def self.create(description)
-    value = obtain_value(description)
+    value = compute_value(description)
     Face.new(description, value)
   end
 
@@ -23,7 +23,7 @@ class Face
   private
   FACE_DESCRIPTIONS = ["2","3","4","5","6","7","8","9","J","Q","K","A"]
 
-  def self.obtain_value(description)
+  def self.compute_value(description)
     FACE_DESCRIPTIONS.find_index(description)
   end
 end
