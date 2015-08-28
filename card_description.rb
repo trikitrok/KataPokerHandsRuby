@@ -10,11 +10,11 @@ class CardDescription
   end
 
   def suit()
-    description_part_at(1)
+    description_part_for_suit()
   end
 
   def face()
-    Face.create(face_description())
+    Face.create(description_part_for_face)
   end
 
   private
@@ -23,11 +23,11 @@ class CardDescription
     CardDescription.new(card_description)
   end
 
-  def face_description()
-    description_part_at(0)
+  def description_part_for_face()
+    String.new(description[0])
   end
 
-  def description_part_at(index)
-    String.new(description[index])
+  def description_part_for_suit()
+    String.new(description[1])
   end
 end
