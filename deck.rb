@@ -1,36 +1,26 @@
 require "./card"
 require "./card_description"
+require "./hand_description_parser"
 
 class Deck
   def self.draw_cards(hand_description)
-    card_tokens = parse(hand_description)
-    create_cards(card_tokens)
+    card_descriptions = parse(hand_description)
+    create_cards(card_descriptions)
   end
 
   private
-  def self.create_cards(cards_tokens)
-    cards_tokens.map do |token|
-      create_card(token)
+  def self.parse(hand_description)
+    HandDescriptionParser.parse(hand_description)
+  end
+
+  def self.create_cards(card_descriptions)
+    card_descriptions.map do |card_description|
+      create_card(card_description)
     end
   end
 
-  def self.create_card(card_token)
-    description = CardDescription.new(card_token)
-    Card.create(description)
-  end
-
-  def self.parse(hand_description)
-    card_tokens = hand_description.split(" ")
-    validate(card_tokens)
-    card_tokens
-  end
-
-  def self.validate(card_tokens)
-    repeated = repeated_cards(card_tokens)
-    raise RepeatedCards.new(repeated) if not repeated.empty?
-  end
-
-  def self.repeated_cards(card_tokens)
-    card_tokens.select { |token| card_tokens.count(token) > 1 }.uniq
+  def self.create_card(card_description)
+    card_description = CardDescription.new(card_description)
+    Card.create(card_description)
   end
 end
