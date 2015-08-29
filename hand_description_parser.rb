@@ -3,7 +3,7 @@ require "./exceptions"
 class HandDescriptionParser
   def self.parse(hand_description)
     card_descriptions = split_in_card_descriptions(hand_description)
-    check_no_duplicates(card_descriptions)
+    check_no_repeated(card_descriptions)
     card_descriptions
   end
 
@@ -12,7 +12,7 @@ class HandDescriptionParser
     hand_description.split(" ")
   end
 
-  def self.check_no_duplicates(descriptions)
+  def self.check_no_repeated(descriptions)
     repeated = compute_repeated(descriptions)
     raise RepeatedCards.new(repeated) if not repeated.empty?
   end
