@@ -26,7 +26,11 @@ class Deck
   end
 
   def self.validate(card_tokens)
-    repeated = card_tokens.select { |token| card_tokens.count(token) > 1 }
-    raise RepeatedCards.new(repeated.uniq) if not repeated.empty?
+    repeated = repeated_cards(card_tokens)
+    raise RepeatedCards.new(repeated) if not repeated.empty?
+  end
+
+  def self.repeated_cards(card_tokens)
+    card_tokens.select { |token| card_tokens.count(token) > 1 }.uniq
   end
 end
