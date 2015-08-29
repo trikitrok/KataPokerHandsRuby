@@ -14,6 +14,8 @@ class Card
 
   private
   def <=>(other)
-    return self.face.compare(other.face)
+    return 0 if self.face.value == other.face.value
+    return -1 if self.face.value > other.face.value
+    return 1 if self.face.value < other.face.value
   end
 end
