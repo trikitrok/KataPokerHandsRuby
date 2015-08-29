@@ -1,5 +1,4 @@
 require "./lib/value_object"
-require "./card_description"
 
 class Card
   extend ValueObjects::ValueObject
@@ -10,7 +9,7 @@ class Card
   end
 
   def description
-    CardDescription.describe(face, suit)
+    face.description + suit
   end
 
   private
