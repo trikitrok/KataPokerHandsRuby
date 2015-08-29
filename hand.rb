@@ -1,3 +1,5 @@
+require "./deck"
+
 class Hand
   def initialize(hand_description)
     @cards = Deck.draw_cards(hand_description)
