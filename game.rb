@@ -5,9 +5,8 @@ class Game
 end
 
 class Card
-  extend ValueObject
+  extend ValueObjects::ValueObject
   fields :face_value, :suit
-  invariants
 
   FACE_VALUES = ["2","3","4","5","6","7","8","9", "J","Q", "K", "A"]
 
