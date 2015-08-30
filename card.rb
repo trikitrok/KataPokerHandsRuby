@@ -1,9 +1,5 @@
 require "./lib/value_object"
 
-class Game
-
-end
-
 class Card
   extend ValueObjects::ValueObject
   fields :face_value, :suit
@@ -37,34 +33,5 @@ class Card
 
   def self.suit_descriptor(description)
     String.new(description[1])
-  end
-end
-
-class Hand
-  def initialize(hand_description)
-    @cards = unmarshal(hand_description)
-  end
-
-  def score()
-    "High card: " + highest_card().description
-  end
-
-  protected
-  def unmarshal(hand_description)
-    cards_tokens = parse(hand_description)
-    create(cards_tokens)
-  end
-
-  def highest_card()
-    @cards.sort().first
-  end
-
-  private
-  def create(card_descriptions)
-    card_descriptions.map {|description| Card.create(description)}
-  end
-
-  def parse(hand_description)
-    hand_description.split(" ")
   end
 end
