@@ -1,3 +1,4 @@
+require "./spec/custom_matchers"
 require "./exceptions"
 require './hand'
 
@@ -18,14 +19,5 @@ describe "Hand" do
 
   def hand_described_by(hand_description)
     Hand.new(hand_description)
-  end
-end
-
-RSpec::Matchers.define :score do |expected|
-  match do |actual|
-    actual.score == expected
-  end
-  failure_message do |actual|
-    "expected '#{actual.score}' score but it actually was '#{expected}'"
   end
 end
