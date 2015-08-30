@@ -2,20 +2,16 @@ require "./lib/value_object"
 
 class Card
   extend ValueObjects::ValueObject
-  fields :face, :suit
-
-  def self.create(description)
-    Card.new(description.face, description.suit)
-  end
+  fields :face, :suit, :value
 
   def description
-    face.description + suit
+    face + suit
   end
 
   private
   def <=>(other)
-    return 0 if self.face.value == other.face.value
-    return -1 if self.face.value > other.face.value
-    return 1 if self.face.value < other.face.value
+    return 0 if self.value == other.value
+    return -1 if self.value > other.value
+    return 1 if self.value < other.value
   end
 end
