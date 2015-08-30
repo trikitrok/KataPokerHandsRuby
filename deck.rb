@@ -21,14 +21,12 @@ class Deck
 
   def self.create_card(card_description)
     card_description = CardDescription.new(card_description)
-    value = CardEvaluator.compute_value(card_description.face)
+    value = compute_value(card_description.face)
     Card.new(card_description.face, card_description.suit, value)
   end
 
-  class CardEvaluator
-    def self.compute_value(face)
-      FACE_VALUES.find_index(face)
-    end
+  def self.compute_value(face)
+    FACE_VALUES.find_index(face)
   end
 
   class CardDescription
