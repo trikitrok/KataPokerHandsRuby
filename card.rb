@@ -1,7 +1,7 @@
-require "./lib/value_object"
+require "value_object"
 
 class Card
-  extend ValueObjects::ValueObject
+  extend ValueObject
   fields :face, :suit, :value
 
   def description

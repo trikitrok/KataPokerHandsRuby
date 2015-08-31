@@ -30,7 +30,7 @@ class Deck
   end
 
   class CardDescription
-    extend ValueObjects::ValueObject
+    extend ValueObject
     fields :description
 
     def suit()
