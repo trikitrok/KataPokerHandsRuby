@@ -1,16 +1,16 @@
 require "./deck"
 
 class Hand
-  def initialize(hand_description)
+  def initialize hand_description
     @cards = Deck.draw_cards(hand_description)
   end
 
-  def score()
+  def score
     "High card: " + highest_card().description
   end
 
   private
-  def highest_card()
+  def highest_card
     @cards.sort().first
   end
 end

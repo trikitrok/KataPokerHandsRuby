@@ -9,7 +9,7 @@ class Card
   end
 
   private
-  def <=>(other)
+  def <=> other
     return 0 if self.value == other.value
     return -1 if self.value > other.value
     return 1 if self.value < other.value
